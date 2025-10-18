@@ -1,14 +1,16 @@
-use std::{io::stdin, process};
+use anyhow::{Context, Result};
 
 use count::count_lines;
+use std::env;
+use std::fs::File;
+use std::io::BufReader;
 
-fn main() {
-    let res = count_lines(stdin().lock());
-    match res {
-        Ok(lines) => println!("{lines} lines"),
-        Err(e) => {
-            eprintln!("{e}");
-            process::exit(1);
-        }
+fn main() -> Result<()> {
+    for path in env::args().skip(1) {
+        let file = File::open(&path)?;
+        let file = BufReader::new(file);
+        let lines = count_lines(file).context(&path)?;
+        println!("{path}: {lines} lines");
     }
+    Ok(())
 }

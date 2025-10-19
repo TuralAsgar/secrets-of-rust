@@ -1,16 +1,32 @@
-use anyhow::{Context, Result};
+use anyhow::Result;
 
-use count::count_lines;
-use std::env;
-use std::fs::File;
-use std::io::BufReader;
+use clap::Parser;
+use count::count_in_path;
+
+#[derive(Parser)]
+/// Counts lines or words in the specificed files
+struct Args {
+    /// Counts words instead of lines
+    #[arg(short, long)]
+    words: bool,
+
+    /// Files to be counted
+    #[arg(required = true)]
+    files: Vec<String>,
+}
 
 fn main() -> Result<()> {
-    for path in env::args().skip(1) {
-        let file = File::open(&path)?;
-        let file = BufReader::new(file);
-        let lines = count_lines(file).context(&path)?;
-        println!("{path}: {lines} lines");
+    let args = Args::parse();
+
+    for path in args.files {
+        let count = count_in_path(&path)?;
+
+        if args.words {
+            println!("{path}: {} words", count.words);
+        } else {
+            println!("{path}: {} lines", count.lines);
+        }
     }
+
     Ok(())
 }

@@ -1,1 +1,1 @@
-/Users/tiasgarov/d/projects/personal/rust/secrets-of-rust/count/target/debug/count: /Users/tiasgarov/d/projects/personal/rust/secrets-of-rust/count/src/lib.rs /Users/tiasgarov/d/projects/personal/rust/secrets-of-rust/count/src/main.rs
+/Users/tural/d/projects/personal/code/rust/secrets-of-rust/count/target/debug/count: /Users/tural/d/projects/personal/code/rust/secrets-of-rust/count/src/lib.rs /Users/tural/d/projects/personal/code/rust/secrets-of-rust/count/src/main.rs

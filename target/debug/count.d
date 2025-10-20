@@ -1,1 +1,0 @@
-/Users/tural/d/projects/personal/code/rust/secrets-of-rust/target/debug/count: /Users/tural/d/projects/personal/code/rust/secrets-of-rust/count/src/lib.rs /Users/tural/d/projects/personal/code/rust/secrets-of-rust/count/src/main.rs
